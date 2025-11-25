@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greenalytics - Análise do Mercado Solar Fotovoltaico</title>
+    <style>
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #065f46 0%, #047857 50%, #059669 100%);
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(5, 150, 105, 0.3);
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            color: #d1fae5;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Seção de Introdução */
+        .intro {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .intro h2 {
+            color: #10b981;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        /* Dashboard Cards */
+        .dashboard-section {
+            margin-bottom: 4rem;
+        }
+        
+        .dashboard-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.2);
+        }
+        
+        .dashboard-title {
+            color: #10b981;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .dashboard-description {
+            color: #94a3b8;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+        
+        .dashboard-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 2px solid rgba(16, 185, 129, 0.3);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .dashboard-image:hover {
+            transform: scale(1.02);
+        }
+        
+        /* Modal para ver imagem em tamanho grande */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            overflow: auto;
+        }
+        
+        .modal-content {
+            margin: 2% auto;
+            display: block;
+            max-width: 95%;
+            max-height: 90%;
+        }
+        
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: #10b981;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close:hover {
+            color: #ffffff;
+        }
+        
+        /* Espaço para publicidade */
+        .ad-space {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.1) 100%);
+            border: 2px dashed rgba(16, 185, 129, 0.3);
+            border-radius: 12px;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 3rem 0;
+        }
+        
+        .ad-space h3 {
+            color: #10b981;
+            margin-bottom: 1rem;
+        }
+        
+        .ad-space p {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 4rem;
+            border-top: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        
+        .footer p {
+            color: #64748b;
+        }
+        
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h1>🌱 Greenalytics</h1>
+        <p>Análise de Dados do Mercado de Energia Solar Fotovoltaica</p>
+    </header>
+    
+    <!-- Conteúdo Principal -->
+    <div class="container">
+        <!-- Introdução -->
+        <section class="intro">
+            <h2>Sobre o Greenalytics</h2>
+            <p>Plataforma dedicada à análise e visualização de dados do mercado de energia solar fotovoltaica. Acompanhe a evolução da capacidade instalada, tendências de mercado e insights sobre a transição energética global.</p>
+        </section>
+        
+        <!-- Dashboards -->
+        <section class="dashboard-section">
+            <h2 style="color: #10b981; font-size: 2rem; margin-bottom: 2rem;">📊 Dashboards & Análises</h2>
+            
+            <!-- Dashboard 1 -->
+            <div class="dashboard-card">
+                <h3 class="dashboard-title">Capacidade Instalada Acumulada - União Europeia</h3>
+                <p class="dashboard-description">Evolução da capacidade fotovoltaica instalada acumulada nos países da União Europeia ao longo dos anos.</p>
+                <img src="cummulative_installed_capacity_EU.png" alt="Dashboard - Capacidade Instalada Acumulada EU" class="dashboard-image" onclick="openModal(this.src)">
+            </div>
+            
+            <!-- Adiciona mais dashboards aqui no futuro -->
+        </section>
+        
+        <!-- Espaço para Publicidade -->
+        <div class="ad-space">
+            <h3>📢 Espaço Publicitário</h3>
+            <p>Este espaço estará disponível para publicidade em breve</p>
+        </div>
+    </div>
+    
+    <!-- Modal para visualização ampliada -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2024 Greenalytics | Dados e Análises do Mercado Solar Fotovoltaico</p>
+        <p style="margin-top: 0.5rem; font-size: 0.85rem;">Desenvolvido com dados de mercado público</p>
+    </footer>
+    
+    <script>
+        // Função para abrir modal com imagem ampliada
+        function openModal(src) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modal.style.display = 'block';
+            modalImg.src = src;
+        }
+        
+        // Função para fechar modal
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+        
+        // Fechar modal com tecla ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
