@@ -55,6 +55,11 @@
             color: var(--primary);
         }
 
+        .nav-center {
+            display: flex;
+            gap: 2rem;
+        }
+
         nav ul {
             list-style: none;
             display: flex;
@@ -72,6 +77,223 @@
             color: var(--primary);
         }
 
+        /* ===== NOVOS ESTILOS: AUTH BUTTONS ===== */
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .auth-buttons button {
+            padding: 0.5rem 1.25rem;
+            border-radius: 6px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .btn-login {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-login:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-register {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-register:hover {
+            background: var(--primary-dark);
+        }
+
+        .user-info {
+            display: none;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-email {
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .btn-logout {
+            padding: 0.5rem 1.25rem;
+            border-radius: 6px;
+            border: 2px solid #dc2626;
+            background: transparent;
+            color: #dc2626;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .btn-logout:hover {
+            background: #dc2626;
+            color: white;
+        }
+
+        /* ===== MODAL STYLES ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 2.5rem;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            margin-bottom: 2rem;
+        }
+
+        .modal-header h2 {
+            color: var(--text-dark);
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-header p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .close {
+            color: var(--text-light);
+            float: right;
+            font-size: 2rem;
+            font-weight: 300;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .close:hover {
+            color: var(--text-dark);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .modal-btn {
+            width: 100%;
+            padding: 0.875rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .modal-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .modal-btn:disabled {
+            background: var(--text-light);
+            cursor: not-allowed;
+        }
+
+        .message {
+            padding: 0.75rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .error-message {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fca5a5;
+        }
+
+        .success-message {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #6ee7b7;
+        }
+
+        /* ===== PROTECTED CONTENT ===== */
+        .protected-content {
+            display: none;
+            position: relative;
+        }
+
+        .protected-content.authenticated {
+            display: block;
+        }
+
+        .locked-overlay {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 2rem;
+            background: var(--bg-light);
+            border-radius: 12px;
+            border: 2px dashed var(--border);
+        }
+
+        .locked-overlay h3 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .locked-overlay p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        /* ===== EXISTING STYLES ===== */
         .hero {
             background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
             padding: 6rem 2rem;
@@ -286,8 +508,18 @@
         }
 
         @media (max-width: 768px) {
-            nav ul {
+            nav {
+                flex-wrap: wrap;
+            }
+
+            .nav-center {
                 display: none;
+            }
+
+            .auth-buttons {
+                width: 100%;
+                justify-content: center;
+                margin-top: 1rem;
             }
 
             .hero h1 {
@@ -308,15 +540,76 @@
     <header>
         <nav>
             <div class="logo">GreenAnalytics</div>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#dashboards">Dashboards</a></li>
-                <li><a href="#insights">Insights</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+            <div class="nav-center">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#dashboards">Dashboards</a></li>
+                    <li><a href="#insights">Insights</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <!-- ===== NOVO: AUTH BUTTONS ===== -->
+            <div class="auth-buttons" id="authButtons">
+                <button class="btn-login" onclick="openLoginModal()">Login</button>
+                <button class="btn-register" onclick="openRegisterModal()">Register</button>
+            </div>
+            <div class="user-info" id="userInfo">
+                <span class="user-email" id="userEmail"></span>
+                <button class="btn-logout" onclick="logoutUser()">Logout</button>
+            </div>
         </nav>
     </header>
+
+    <!-- ===== NOVO: LOGIN MODAL ===== -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+            <div class="modal-header">
+                <h2>Login</h2>
+                <p>Access exclusive dashboards and insights</p>
+            </div>
+            <div id="loginMessage"></div>
+            <form onsubmit="loginUser(event)">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <button type="submit" class="modal-btn">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ===== NOVO: REGISTER MODAL ===== -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeRegisterModal()">&times;</span>
+            <div class="modal-header">
+                <h2>Register</h2>
+                <p>Create your account to access premium content</p>
+            </div>
+            <div id="registerMessage"></div>
+            <form onsubmit="registerUser(event)">
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Password</label>
+                    <input type="password" id="registerPassword" required minlength="6">
+                </div>
+                <div class="form-group">
+                    <label for="registerPasswordConfirm">Confirm Password</label>
+                    <input type="password" id="registerPasswordConfirm" required minlength="6">
+                </div>
+                <button type="submit" class="modal-btn">Create Account</button>
+            </form>
+        </div>
+    </div>
 
     <section class="hero" id="home">
         <h1>Data-Driven Insights for the Energy Transition</h1>
@@ -352,7 +645,8 @@
         </div>
     </section>
 
-    <section id="dashboards">
+    <!-- ===== MODIFICADO: PROTECTED CONTENT ===== -->
+    <section id="dashboards" class="protected-content">
         <h2>Featured Dashboards</h2>
         <p>Explore interactive data visualisations covering key aspects of Europe's energy landscape.</p>
         
@@ -375,7 +669,18 @@
         </div>
     </section>
 
-    <section id="insights">
+    <!-- ===== NOVO: LOCKED STATE FOR DASHBOARDS ===== -->
+    <section id="dashboardsLocked" class="locked-overlay">
+        <h3>🔒 Premium Content</h3>
+        <p>Please login or register to access our interactive dashboards</p>
+        <div class="button-group">
+            <button class="btn btn-primary" onclick="openLoginModal()">Login</button>
+            <button class="btn btn-secondary" onclick="openRegisterModal()">Register</button>
+        </div>
+    </section>
+
+    <!-- ===== MODIFICADO: PROTECTED CONTENT ===== -->
+    <section id="insights" class="protected-content">
         <h2>Latest Insights</h2>
         <p>Read in-depth analysis and commentary on energy trends and market developments.</p>
         
@@ -398,6 +703,16 @@
         </div>
     </section>
 
+    <!-- ===== NOVO: LOCKED STATE FOR INSIGHTS ===== -->
+    <section id="insightsLocked" class="locked-overlay">
+        <h3>🔒 Premium Content</h3>
+        <p>Please login or register to access our latest insights and analysis</p>
+        <div class="button-group">
+            <button class="btn btn-primary" onclick="openLoginModal()">Login</button>
+            <button class="btn btn-secondary" onclick="openRegisterModal()">Register</button>
+        </div>
+    </section>
+
     <section class="about-section" id="about">
         <h2>About</h2>
         <p>GreenAnalytics is an independent, non-commercial initiative created to make energy data more accessible and understandable. The project focuses on providing transparent analysis, intuitive visualisations and evidence-based interpretations of Europe's rapidly evolving energy landscape.</p>
@@ -408,7 +723,7 @@
     <section class="contact-section" id="contact">
         <h2>Contact</h2>
         <p>If you have questions or would like to discuss data-related work, feel free to get in touch.</p>
-        <p><a href="mailto:eugreenalytics@gmail.com">contact@greenalytics.com</a></p>
+        <p><a href="mailto:contact@greenalytics.com">contact@greenalytics.com</a></p>
     </section>
 
     <footer>
@@ -437,5 +752,146 @@
             <p>&copy; GreenAnalytics 2025 &mdash; All rights reserved</p>
         </div>
     </footer>
-</body>
-</html>
+
+    <!-- ===== NOVO: FIREBASE SCRIPTS ===== -->
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+
+        // ===== SUBSTITUIR COM AS TUAS CREDENCIAIS FIREBASE =====
+        const firebaseConfig = {
+            apiKey: "AIzaSy...",
+            authDomain: "...",
+            projectId: "...",
+            storageBucket: "...",
+            messagingSenderId: "...",
+            appId: "..."
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // Make auth available globally
+        window.auth = auth;
+        window.createUserWithEmailAndPassword = createUserWithEmailAndPassword;
+        window.signInWithEmailAndPassword = signInWithEmailAndPassword;
+        window.signOut = signOut;
+
+        // Monitor authentication state
+        onAuthStateChanged(auth, (user) => {
+            const authButtons = document.getElementById('authButtons');
+            const userInfo = document.getElementById('userInfo');
+            const userEmail = document.getElementById('userEmail');
+            const protectedSections = document.querySelectorAll('.protected-content');
+            const dashboardsLocked = document.getElementById('dashboardsLocked');
+            const insightsLocked = document.getElementById('insightsLocked');
+
+            if (user) {
+                // User is signed in
+                authButtons.style.display = 'none';
+                userInfo.style.display = 'flex';
+                userEmail.textContent = user.email;
+                
+                // Show protected content
+                protectedSections.forEach(section => {
+                    section.classList.add('authenticated');
+                });
+                dashboardsLocked.style.display = 'none';
+                insightsLocked.style.display = 'none';
+            } else {
+                // User is signed out
+                authButtons.style.display = 'flex';
+                userInfo.style.display = 'none';
+                
+                // Hide protected content
+                protectedSections.forEach(section => {
+                    section.classList.remove('authenticated');
+                });
+                dashboardsLocked.style.display = 'flex';
+                insightsLocked.style.display = 'flex';
+            }
+        });
+    </script>
+
+    <script>
+        // Modal functions
+        function openLoginModal() {
+            document.getElementById('loginModal').style.display = 'block';
+            document.getElementById('loginMessage').innerHTML = '';
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').style.display = 'none';
+        }
+
+        function openRegisterModal() {
+            document.getElementById('registerModal').style.display = 'block';
+            document.getElementById('registerMessage').innerHTML = '';
+        }
+
+        function closeRegisterModal() {
+            document.getElementById('registerModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const loginModal = document.getElementById('loginModal');
+            const registerModal = document.getElementById('registerModal');
+            if (event.target == loginModal) {
+                closeLoginModal();
+            }
+            if (event.target == registerModal) {
+                closeRegisterModal();
+            }
+        }
+
+        // Register function
+        async function registerUser(event) {
+            event.preventDefault();
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const passwordConfirm = document.getElementById('registerPasswordConfirm').value;
+            const messageDiv = document.getElementById('registerMessage');
+
+            // Validate passwords match
+            if (password !== passwordConfirm) {
+                messageDiv.innerHTML = '<div class="message error-message">Passwords do not match</div>';
+                return;
+            }
+
+            try {
+                await window.createUserWithEmailAndPassword(window.auth, email, password);
+                messageDiv.innerHTML = '<div class="message success-message">Account created successfully!</div>';
+                setTimeout(() => {
+                    closeRegisterModal();
+                }, 1500);
+            } catch (error) {
+                let errorMessage = 'Registration failed. Please try again.';
+                if (error.code === 'auth/email-already-in-use') {
+                    errorMessage = 'Email already in use';
+                } else if (error.code === 'auth/weak-password') {
+                    errorMessage = 'Password should be at least 6 characters';
+                } else if (error.code === 'auth/invalid-email') {
+                    errorMessage = 'Invalid email address';
+                }
+                messageDiv.innerHTML = `<div class="message error-message">${errorMessage}</div>`;
+            }
+        }
+
+        // Login function
+        async function loginUser(event) {
+            event.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const messageDiv = document.getElementById('loginMessage');
+
+            try {
+                await window.signInWithEmailAndPassword(window.auth, email, password);
+                messageDiv.innerHTML = '<div class="message success-message">Login successful!</div>';
+                setTimeout(() => {
+                    closeLoginModal();
+                }, 1500);
+            } catch (error) {
+                let errorMessage = '
