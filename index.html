@@ -1,265 +1,441 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Greenalytics - Análise do Mercado Solar Fotovoltaico</title>
+    <title>GreenAnalytics | Data-Driven Insights for the Energy Transition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-            color: #ffffff;
+
+        :root {
+            --primary: #059669;
+            --primary-dark: #047857;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --border: #e5e7eb;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-white);
         }
-        
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, #065f46 0%, #047857 50%, #059669 100%);
-            padding: 3rem 2rem;
-            text-align: center;
-            box-shadow: 0 4px 20px rgba(5, 150, 105, 0.3);
-        }
-        
-        .header h1 {
-            font-size: 3rem;
-            color: #ffffff;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .header p {
-            font-size: 1.2rem;
-            color: #d1fae5;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        /* Container */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        
-        /* Seção de Introdução */
-        .intro {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 3rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .intro h2 {
-            color: #10b981;
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-        }
-        
-        /* Dashboard Cards */
-        .dashboard-section {
-            margin-bottom: 4rem;
-        }
-        
-        .dashboard-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .dashboard-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.2);
-        }
-        
-        .dashboard-title {
-            color: #10b981;
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .dashboard-description {
-            color: #94a3b8;
-            margin-bottom: 1.5rem;
-            font-size: 1rem;
-        }
-        
-        .dashboard-image {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            border: 2px solid rgba(16, 185, 129, 0.3);
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-        
-        .dashboard-image:hover {
-            transform: scale(1.02);
-        }
-        
-        /* Modal para ver imagem em tamanho grande */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
+
+        header {
+            background: var(--bg-white);
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 0;
+            position: sticky;
             top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.95);
-            overflow: auto;
+            z-index: 100;
         }
-        
-        .modal-content {
-            margin: 2% auto;
-            display: block;
-            max-width: 95%;
-            max-height: 90%;
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        
-        .close {
-            position: absolute;
-            top: 20px;
-            right: 40px;
-            color: #10b981;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
             transition: color 0.3s;
         }
-        
-        .close:hover {
-            color: #ffffff;
+
+        nav a:hover {
+            color: var(--primary);
         }
-        
-        /* Espaço para publicidade */
-        .ad-space {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(5, 150, 105, 0.1) 100%);
-            border: 2px dashed rgba(16, 185, 129, 0.3);
-            border-radius: 12px;
-            padding: 3rem 2rem;
+
+        .hero {
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+            padding: 6rem 2rem;
             text-align: center;
-            margin: 3rem 0;
         }
-        
-        .ad-space h3 {
-            color: #10b981;
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        section > p {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            text-align: center;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature {
+            padding: 1.5rem;
+            background: var(--bg-light);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .feature h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .feature p {
+            color: var(--text-light);
+            font-size: 0.9375rem;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .card p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .about-section {
+            background: var(--bg-light);
+        }
+
+        .about-section p {
+            text-align: left;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .contact-section {
+            text-align: center;
+        }
+
+        .contact-section a {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .contact-section a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1rem;
+            font-weight: 600;
             margin-bottom: 1rem;
         }
-        
-        .ad-space p {
-            color: #64748b;
-            font-size: 0.9rem;
+
+        .footer-section ul {
+            list-style: none;
         }
-        
-        /* Footer */
-        .footer {
-            background: rgba(0, 0, 0, 0.5);
-            padding: 2rem;
+
+        .footer-section a {
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 0.9375rem;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
             text-align: center;
-            margin-top: 4rem;
-            border-top: 1px solid rgba(16, 185, 129, 0.2);
+            color: #9ca3af;
+            font-size: 0.875rem;
         }
-        
-        .footer p {
-            color: #64748b;
-        }
-        
-        /* Responsivo */
+
         @media (max-width: 768px) {
-            .header h1 {
+            nav ul {
+                display: none;
+            }
+
+            .hero h1 {
                 font-size: 2rem;
             }
-            
-            .header p {
+
+            .hero p {
                 font-size: 1rem;
             }
-            
-            .container {
-                padding: 1rem;
+
+            section h2 {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <h1>🌱 Greenalytics</h1>
-        <p>Análise de Dados do Mercado de Energia Solar Fotovoltaica</p>
+    <header>
+        <nav>
+            <div class="logo">GreenAnalytics</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#dashboards">Dashboards</a></li>
+                <li><a href="#insights">Insights</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
-    
-    <!-- Conteúdo Principal -->
-    <div class="container">
-        <!-- Introdução -->
-        <section class="intro">
-            <h2>Sobre o Greenalytics</h2>
-            <p>Plataforma dedicada à análise e visualização de dados do mercado de energia solar fotovoltaica. Acompanhe a evolução da capacidade instalada, tendências de mercado e insights sobre a transição energética global.</p>
-        </section>
-        
-        <!-- Dashboards -->
-        <section class="dashboard-section">
-            <h2 style="color: #10b981; font-size: 2rem; margin-bottom: 2rem;">📊 Dashboards & Análises</h2>
-            
-            <!-- Dashboard 1 -->
-            <div class="dashboard-card">
-                <h3 class="dashboard-title">Capacidade Instalada Acumulada - União Europeia</h3>
-                <p class="dashboard-description">Evolução da capacidade fotovoltaica instalada acumulada nos países da União Europeia ao longo dos anos.</p>
-                <img src="cummulative_installed_capacity_EU.png" alt="Dashboard - Capacidade Instalada Acumulada EU" class="dashboard-image" onclick="openModal(this.src)">
-            </div>
-            
-            <!-- Adiciona mais dashboards aqui no futuro -->
-        </section>
-        
-        <!-- Espaço para Publicidade -->
-        <div class="ad-space">
-            <h3>📢 Espaço Publicitário</h3>
-            <p>Este espaço estará disponível para publicidade em breve</p>
+
+    <section class="hero" id="home">
+        <h1>Data-Driven Insights for the Energy Transition</h1>
+        <p>Clear visualisations and independent analysis of Europe's solar and electricity markets.</p>
+        <div class="button-group">
+            <a href="#dashboards" class="btn btn-primary">View Dashboards</a>
+            <a href="#insights" class="btn btn-secondary">Explore Insights</a>
         </div>
-    </div>
-    
-    <!-- Modal para visualização ampliada -->
-    <div id="imageModal" class="modal" onclick="closeModal()">
-        <span class="close">&times;</span>
-        <img class="modal-content" id="modalImage">
-    </div>
-    
-    <!-- Footer -->
-    <footer class="footer">
-        <p>© 2024 Greenalytics | Dados e Análises do Mercado Solar Fotovoltaico</p>
-        <p style="margin-top: 0.5rem; font-size: 0.85rem;">Desenvolvido com dados de mercado público</p>
+    </section>
+
+    <section>
+        <h2>What is GreenAnalytics</h2>
+        <p>GreenAnalytics is an independent platform dedicated to analysing and visualising energy data, with a special focus on solar photovoltaic developments across Europe. The mission is to transform complex datasets into clear, accessible and actionable insights — from installed capacity trends to electricity markets, technology comparisons, and system flexibility.</p>
+        <p>The platform brings together interactive dashboards, analytical content, and research-driven energy intelligence to help professionals, researchers, and energy enthusiasts better understand the European energy transition.</p>
+        
+        <div class="features">
+            <div class="feature">
+                <h3>Interactive Dashboards</h3>
+                <p>Clean, up-to-date data visualisations designed for clarity and insight.</p>
+            </div>
+            <div class="feature">
+                <h3>Independent Analysis</h3>
+                <p>Objective analysis of solar PV and electricity markets without commercial bias.</p>
+            </div>
+            <div class="feature">
+                <h3>Technology Comparisons</h3>
+                <p>Comparative views of efficiencies, technologies and market evolution.</p>
+            </div>
+            <div class="feature">
+                <h3>Research-Based Insights</h3>
+                <p>Evidence-based insights on flexibility, storage and system behaviour.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="dashboards">
+        <h2>Featured Dashboards</h2>
+        <p>Explore interactive data visualisations covering key aspects of Europe's energy landscape.</p>
+        
+        <div class="cards">
+            <div class="card">
+                <h3>European Solar PV Capacity (2010–2024)</h3>
+                <p>Installed capacity evolution, yearly additions and country comparisons.</p>
+                <a href="#" class="btn btn-primary">Open Dashboard</a>
+            </div>
+            <div class="card">
+                <h3>Electricity Markets & Flexibility</h3>
+                <p>Day-Ahead prices, imbalance price signals and system volatility.</p>
+                <a href="#" class="btn btn-primary">Open Dashboard</a>
+            </div>
+            <div class="card">
+                <h3>PV Cell Technology Efficiency Overview</h3>
+                <p>Lab efficiencies across crystalline, thin-film and emerging technologies.</p>
+                <a href="#" class="btn btn-primary">Open Dashboard</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="insights">
+        <h2>Latest Insights</h2>
+        <p>Read in-depth analysis and commentary on energy trends and market developments.</p>
+        
+        <div class="cards">
+            <div class="card">
+                <h3>Why Solar Capacity Growth Accelerated in 2023</h3>
+                <p>Analysis of the policy drivers, market conditions and technological improvements that led to record solar installations across Europe in 2023.</p>
+                <a href="#" class="btn btn-secondary">Read More</a>
+            </div>
+            <div class="card">
+                <h3>Understanding Market Signals for Battery Operation</h3>
+                <p>How day-ahead and imbalance pricing patterns create opportunities for flexible battery storage systems in today's electricity markets.</p>
+                <a href="#" class="btn btn-secondary">Read More</a>
+            </div>
+            <div class="card">
+                <h3>Comparing PV Technologies: What the Data Really Shows</h3>
+                <p>An evidence-based look at efficiency trends, cost trajectories and practical performance across different photovoltaic cell technologies.</p>
+                <a href="#" class="btn btn-secondary">Read More</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section" id="about">
+        <h2>About</h2>
+        <p>GreenAnalytics is an independent, non-commercial initiative created to make energy data more accessible and understandable. The project focuses on providing transparent analysis, intuitive visualisations and evidence-based interpretations of Europe's rapidly evolving energy landscape.</p>
+        <p>The aim is to support better decision-making — from industry professionals to curious citizens — through clear, unbiased and well-structured information. While the platform remains anonymous for now, it reflects years of experience working with energy datasets, photovoltaic technologies and electricity market dynamics.</p>
+        <p>Consulting support may be available for organisations needing tailored data analysis or custom dashboards.</p>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <h2>Contact</h2>
+        <p>If you have questions or would like to discuss data-related work, feel free to get in touch.</p>
+        <p><a href="mailto:contact@greenalytics.com">contact@greenalytics.com</a></p>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#dashboards">Dashboards</a></li>
+                    <li><a href="#insights">Insights</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:contact@greenalytics.com">Email Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>GreenAnalytics</h4>
+                <p style="color: #9ca3af; font-size: 0.875rem; line-height: 1.6;">Independent energy data analysis and visualisation platform.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; GreenAnalytics 2025 &mdash; All rights reserved</p>
+        </div>
     </footer>
-    
-    <script>
-        // Função para abrir modal com imagem ampliada
-        function openModal(src) {
-            const modal = document.getElementById('imageModal');
-            const modalImg = document.getElementById('modalImage');
-            modal.style.display = 'block';
-            modalImg.src = src;
-        }
-        
-        // Função para fechar modal
-        function closeModal() {
-            document.getElementById('imageModal').style.display = 'none';
-        }
-        
-        // Fechar modal com tecla ESC
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeModal();
-            }
-        });
-    </script>
 </body>
 </html>
