@@ -6,7 +6,7 @@
     <title>GreenAnalytics | Data-Driven Insights for the Energy Transition</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet>
     <style>
         * {
             margin: 0;
@@ -59,6 +59,7 @@
             list-style: none;
             display: flex;
             gap: 2rem;
+            align-items: center;
         }
 
         nav a {
@@ -70,6 +71,69 @@
 
         nav a:hover {
             color: var(--primary);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .auth-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.875rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .auth-btn.login {
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+
+        .auth-btn.login:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .auth-btn.register {
+            background: var(--primary);
+            color: white;
+        }
+
+        .auth-btn.register:hover {
+            background: var(--primary-dark);
+        }
+
+        .user-info {
+            display: none;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-email {
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .logout-btn {
+            padding: 0.5rem 1rem;
+            background: transparent;
+            color: var(--text-light);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: all 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: #f3f4f6;
+            color: var(--text-dark);
         }
 
         .hero {
@@ -285,6 +349,78 @@
             font-size: 0.875rem;
         }
 
+        .protected-content {
+            display: none;
+        }
+
+        .auth-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-content h3 {
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: var(--text-dark);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .modal-buttons button {
+            flex: 1;
+        }
+
+        .close-modal {
+            background: transparent;
+            border: none;
+            font-size: 1.5rem;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
         @media (max-width: 768px) {
             nav ul {
                 display: none;
@@ -301,6 +437,15 @@
             section h2 {
                 font-size: 2rem;
             }
+
+            .auth-buttons {
+                gap: 0.5rem;
+            }
+
+            .auth-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
         }
     </style>
 </head>
@@ -314,9 +459,60 @@
                 <li><a href="#insights">Insights</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
+                
+                <!-- Authentication Buttons -->
+                <div class="auth-buttons" id="authButtons">
+                    <button class="auth-btn login" onclick="showLoginModal()">Login</button>
+                    <button class="auth-btn register" onclick="showRegisterModal()">Register</button>
+                </div>
+                
+                <!-- User Info (shown when logged in) -->
+                <div class="user-info" id="userInfo">
+                    <span class="user-email" id="userEmail"></span>
+                    <button class="logout-btn" onclick="logout()">Logout</button>
+                </div>
             </ul>
         </nav>
     </header>
+
+    <!-- Authentication Modals -->
+    <div class="auth-modal" id="loginModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeLoginModal()">&times;</button>
+            <h3>Login to Your Account</h3>
+            <div class="form-group">
+                <label for="loginEmail">Email</label>
+                <input type="email" id="loginEmail" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input type="password" id="loginPassword" placeholder="Enter your password">
+            </div>
+            <div class="modal-buttons">
+                <button class="btn btn-secondary" onclick="closeLoginModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="login()">Login</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="auth-modal" id="registerModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeRegisterModal()">&times;</button>
+            <h3>Create Your Account</h3>
+            <div class="form-group">
+                <label for="registerEmail">Email</label>
+                <input type="email" id="registerEmail" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label for="registerPassword">Password</label>
+                <input type="password" id="registerPassword" placeholder="Create a password (min. 6 characters)">
+            </div>
+            <div class="modal-buttons">
+                <button class="btn btn-secondary" onclick="closeRegisterModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="register()">Register</button>
+            </div>
+        </div>
+    </div>
 
     <section class="hero" id="home">
         <h1>Data-Driven Insights for the Energy Transition</h1>
@@ -352,7 +548,8 @@
         </div>
     </section>
 
-    <section id="dashboards">
+    <!-- Protected Content Sections -->
+    <section id="dashboards" class="protected-content">
         <h2>Featured Dashboards</h2>
         <p>Explore interactive data visualisations covering key aspects of Europe's energy landscape.</p>
         
@@ -375,7 +572,7 @@
         </div>
     </section>
 
-    <section id="insights">
+    <section id="insights" class="protected-content">
         <h2>Latest Insights</h2>
         <p>Read in-depth analysis and commentary on energy trends and market developments.</p>
         
@@ -437,5 +634,134 @@
             <p>&copy; GreenAnalytics 2025 &mdash; All rights reserved</p>
         </div>
     </footer>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+
+    <script>
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBNklaFNgj5lyAw2d7GVjc4ICRINbhNbLA",
+            authDomain: "greenalytics-23013.firebaseapp.com",
+            projectId: "greenalytics-23013",
+            storageBucket: "greenalytics-23013.firebasestorage.app",
+            messagingSenderId: "221251356778",
+            appId: "1:221251356778:web:220a1bc4c4b0645766a213"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // Authentication Functions
+        function showLoginModal() {
+            document.getElementById('loginModal').style.display = 'flex';
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').style.display = 'none';
+            document.getElementById('loginEmail').value = '';
+            document.getElementById('loginPassword').value = '';
+        }
+
+        function showRegisterModal() {
+            document.getElementById('registerModal').style.display = 'flex';
+        }
+
+        function closeRegisterModal() {
+            document.getElementById('registerModal').style.display = 'none';
+            document.getElementById('registerEmail').value = '';
+            document.getElementById('registerPassword').value = '';
+        }
+
+        function login() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            if (!email || !password) {
+                alert('Please enter both email and password');
+                return;
+            }
+
+            firebase.auth().signInWithEmailAndPassword(email, password)
+                .then(() => {
+                    closeLoginModal();
+                    alert('Login successful!');
+                })
+                .catch(error => {
+                    alert('Login error: ' + error.message);
+                });
+        }
+
+        function register() {
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+
+            if (!email || !password) {
+                alert('Please enter both email and password');
+                return;
+            }
+
+            if (password.length < 6) {
+                alert('Password must be at least 6 characters long');
+                return;
+            }
+
+            firebase.auth().createUserWithEmailAndPassword(email, password)
+                .then(() => {
+                    closeRegisterModal();
+                    alert('Account created successfully!');
+                })
+                .catch(error => {
+                    alert('Registration error: ' + error.message);
+                });
+        }
+
+        function logout() {
+            firebase.auth().signOut();
+        }
+
+        // Auth State Listener
+        firebase.auth().onAuthStateChanged(user => {
+            const authButtons = document.getElementById('authButtons');
+            const userInfo = document.getElementById('userInfo');
+            const userEmail = document.getElementById('userEmail');
+            const protectedContent = document.querySelectorAll('.protected-content');
+
+            if (user) {
+                // User is logged in
+                authButtons.style.display = 'none';
+                userInfo.style.display = 'flex';
+                userEmail.textContent = user.email;
+                
+                // Show protected content
+                protectedContent.forEach(element => {
+                    element.style.display = 'block';
+                });
+            } else {
+                // User is logged out
+                authButtons.style.display = 'flex';
+                userInfo.style.display = 'none';
+                
+                // Hide protected content
+                protectedContent.forEach(element => {
+                    element.style.display = 'none';
+                });
+            }
+        });
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            const loginModal = document.getElementById('loginModal');
+            const registerModal = document.getElementById('registerModal');
+            
+            if (event.target === loginModal) {
+                closeLoginModal();
+            }
+            if (event.target === registerModal) {
+                closeRegisterModal();
+            }
+        }
+    </script>
 </body>
 </html>
