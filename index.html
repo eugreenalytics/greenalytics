@@ -77,223 +77,84 @@
             color: var(--primary);
         }
 
-        /* ===== NOVOS ESTILOS: AUTH BUTTONS ===== */
-        .auth-buttons {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .auth-buttons button {
-            padding: 0.5rem 1.25rem;
-            border-radius: 6px;
-            border: none;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 0.9rem;
-        }
-
-        .btn-login {
-            background: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        .btn-login:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-register {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-register:hover {
-            background: var(--primary-dark);
-        }
-
-        .user-info {
-            display: none;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .user-email {
-            color: var(--text-dark);
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .btn-logout {
-            padding: 0.5rem 1.25rem;
-            border-radius: 6px;
-            border: 2px solid #dc2626;
-            background: transparent;
-            color: #dc2626;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 0.9rem;
-        }
-
-        .btn-logout:hover {
-            background: #dc2626;
-            color: white;
-        }
-
-        /* ===== MODAL STYLES ===== */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(4px);
-        }
-
-        .modal-content {
-            background: white;
-            margin: 5% auto;
-            padding: 2.5rem;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 450px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        .modal-header {
-            margin-bottom: 2rem;
-        }
-
-        .modal-header h2 {
-            color: var(--text-dark);
-            font-size: 1.75rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .modal-header p {
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-
-        .close {
-            color: var(--text-light);
-            float: right;
-            font-size: 2rem;
-            font-weight: 300;
-            cursor: pointer;
-            line-height: 1;
-        }
-
-        .close:hover {
-            color: var(--text-dark);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--text-dark);
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 0.75rem;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        .modal-btn {
-            width: 100%;
-            padding: 0.875rem;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .modal-btn:hover {
-            background: var(--primary-dark);
-        }
-
-        .modal-btn:disabled {
-            background: var(--text-light);
-            cursor: not-allowed;
-        }
-
-        .message {
-            padding: 0.75rem;
-            border-radius: 6px;
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-        }
-
-        .error-message {
-            background: #fee2e2;
-            color: #991b1b;
-            border: 1px solid #fca5a5;
-        }
-
-        .success-message {
-            background: #d1fae5;
-            color: #065f46;
-            border: 1px solid #6ee7b7;
-        }
-
-        /* ===== PROTECTED CONTENT ===== */
-        .protected-content {
-            display: none;
+        /* Dropdown styles */
+        .nav-item {
             position: relative;
         }
 
-        .protected-content.authenticated {
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            min-width: 220px;
+            padding: 0.5rem 0;
+            margin-top: 0.5rem;
+        }
+
+        .nav-item:hover .dropdown {
             display: block;
         }
 
-        .locked-overlay {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 4rem 2rem;
-            background: var(--bg-light);
-            border-radius: 12px;
-            border: 2px dashed var(--border);
-        }
-
-        .locked-overlay h3 {
-            font-size: 1.5rem;
+        .dropdown a {
+            display: block;
+            padding: 0.75rem 1.25rem;
             color: var(--text-dark);
-            margin-bottom: 0.5rem;
+            font-weight: 500;
+            font-size: 0.9375rem;
+            transition: background 0.2s;
         }
 
-        .locked-overlay p {
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
+        .dropdown a:hover {
+            background: var(--bg-light);
+            color: var(--primary);
         }
 
-        /* ===== EXISTING STYLES ===== */
+        /* Button dropdown styles */
+        .btn-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .btn-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            min-width: 220px;
+            padding: 0.5rem 0;
+            margin-top: 0.5rem;
+            z-index: 10;
+        }
+
+        .btn-wrapper:hover .btn-dropdown {
+            display: block;
+        }
+
+        .btn-dropdown a {
+            display: block;
+            padding: 0.75rem 1.25rem;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.9375rem;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .btn-dropdown a:hover {
+            background: var(--bg-light);
+            color: var(--primary);
+        }
+
         .hero {
             background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
             padding: 6rem 2rem;
@@ -402,39 +263,6 @@
             font-size: 0.9375rem;
         }
 
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .card {
-            background: var(--bg-white);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 2rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-        }
-
-        .card h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            margin-bottom: 0.75rem;
-        }
-
-        .card p {
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
-
         .about-section {
             background: var(--bg-light);
         }
@@ -516,12 +344,6 @@
                 display: none;
             }
 
-            .auth-buttons {
-                width: 100%;
-                justify-content: center;
-                margin-top: 1rem;
-            }
-
             .hero h1 {
                 font-size: 2rem;
             }
@@ -542,81 +364,58 @@
             <div class="logo">GreenAnalytics</div>
             <div class="nav-center">
                 <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#dashboards">Dashboards</a></li>
-                    <li><a href="#insights">Insights</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="nav-item">
+                        <a href="dashboards.html">Dashboards</a>
+                        <div class="dropdown">
+                            <a href="pv-market.html">PV Market</a>
+                            <a href="pv-technology.html">PV Technology</a>
+                            <a href="flexibility.html">Flexibility & Storage</a>
+                            <a href="electricity-prices.html">Electricity Prices</a>
+                            <a href="energy-system.html">Energy System Indicators</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="insights.html">Insights</a>
+                        <div class="dropdown">
+                            <a href="pv-market.html">PV Market</a>
+                            <a href="pv-technology.html">PV Technology</a>
+                            <a href="flexibility.html">Flexibility & Storage</a>
+                            <a href="electricity-prices.html">Electricity Prices</a>
+                            <a href="energy-system.html">Energy System Indicators</a>
+                        </div>
+                    </li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
-            <!-- ===== NOVO: AUTH BUTTONS ===== -->
-            <div class="auth-buttons" id="authButtons">
-                <button class="btn-login" onclick="openLoginModal()">Login</button>
-                <button class="btn-register" onclick="openRegisterModal()">Register</button>
-            </div>
-            <div class="user-info" id="userInfo">
-                <span class="user-email" id="userEmail"></span>
-                <button class="btn-logout" onclick="logoutUser()">Logout</button>
-            </div>
         </nav>
     </header>
-
-    <!-- ===== NOVO: LOGIN MODAL ===== -->
-    <div id="loginModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeLoginModal()">&times;</span>
-            <div class="modal-header">
-                <h2>Login</h2>
-                <p>Access exclusive dashboards and insights</p>
-            </div>
-            <div id="loginMessage"></div>
-            <form onsubmit="loginUser(event)">
-                <div class="form-group">
-                    <label for="loginEmail">Email</label>
-                    <input type="email" id="loginEmail" required>
-                </div>
-                <div class="form-group">
-                    <label for="loginPassword">Password</label>
-                    <input type="password" id="loginPassword" required>
-                </div>
-                <button type="submit" class="modal-btn">Login</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- ===== NOVO: REGISTER MODAL ===== -->
-    <div id="registerModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeRegisterModal()">&times;</span>
-            <div class="modal-header">
-                <h2>Register</h2>
-                <p>Create your account to access premium content</p>
-            </div>
-            <div id="registerMessage"></div>
-            <form onsubmit="registerUser(event)">
-                <div class="form-group">
-                    <label for="registerEmail">Email</label>
-                    <input type="email" id="registerEmail" required>
-                </div>
-                <div class="form-group">
-                    <label for="registerPassword">Password</label>
-                    <input type="password" id="registerPassword" required minlength="6">
-                </div>
-                <div class="form-group">
-                    <label for="registerPasswordConfirm">Confirm Password</label>
-                    <input type="password" id="registerPasswordConfirm" required minlength="6">
-                </div>
-                <button type="submit" class="modal-btn">Create Account</button>
-            </form>
-        </div>
-    </div>
 
     <section class="hero" id="home">
         <h1>Data-Driven Insights for the Energy Transition</h1>
         <p>Clear visualisations and independent analysis of Europe's solar and electricity markets.</p>
         <div class="button-group">
-            <a href="#dashboards" class="btn btn-primary">View Dashboards</a>
-            <a href="#insights" class="btn btn-secondary">Explore Insights</a>
+            <div class="btn-wrapper">
+                <a href="dashboards.html" class="btn btn-primary">View Dashboards</a>
+                <div class="btn-dropdown">
+                    <a href="pv-market.html">PV Market</a>
+                    <a href="pv-technology.html">PV Technology</a>
+                    <a href="flexibility.html">Flexibility & Storage</a>
+                    <a href="electricity-prices.html">Electricity Prices</a>
+                    <a href="energy-system.html">Energy System Indicators</a>
+                </div>
+            </div>
+            <div class="btn-wrapper">
+                <a href="insights.html" class="btn btn-secondary">Explore Insights</a>
+                <div class="btn-dropdown">
+                    <a href="pv-market.html">PV Market</a>
+                    <a href="pv-technology.html">PV Technology</a>
+                    <a href="flexibility.html">Flexibility & Storage</a>
+                    <a href="electricity-prices.html">Electricity Prices</a>
+                    <a href="energy-system.html">Energy System Indicators</a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -645,74 +444,6 @@
         </div>
     </section>
 
-    <!-- ===== MODIFICADO: PROTECTED CONTENT ===== -->
-    <section id="dashboards" class="protected-content">
-        <h2>Featured Dashboards</h2>
-        <p>Explore interactive data visualisations covering key aspects of Europe's energy landscape.</p>
-        
-        <div class="cards">
-            <div class="card">
-                <h3>European Solar PV Capacity (2010–2024)</h3>
-                <p>Installed capacity evolution, yearly additions and country comparisons.</p>
-                <a href="#" class="btn btn-primary">Open Dashboard</a>
-            </div>
-            <div class="card">
-                <h3>Electricity Markets & Flexibility</h3>
-                <p>Day-Ahead prices, imbalance price signals and system volatility.</p>
-                <a href="#" class="btn btn-primary">Open Dashboard</a>
-            </div>
-            <div class="card">
-                <h3>PV Cell Technology Efficiency Overview</h3>
-                <p>Lab efficiencies across crystalline, thin-film and emerging technologies.</p>
-                <a href="#" class="btn btn-primary">Open Dashboard</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== NOVO: LOCKED STATE FOR DASHBOARDS ===== -->
-    <section id="dashboardsLocked" class="locked-overlay">
-        <h3>🔒 Premium Content</h3>
-        <p>Please login or register to access our interactive dashboards</p>
-        <div class="button-group">
-            <button class="btn btn-primary" onclick="openLoginModal()">Login</button>
-            <button class="btn btn-secondary" onclick="openRegisterModal()">Register</button>
-        </div>
-    </section>
-
-    <!-- ===== MODIFICADO: PROTECTED CONTENT ===== -->
-    <section id="insights" class="protected-content">
-        <h2>Latest Insights</h2>
-        <p>Read in-depth analysis and commentary on energy trends and market developments.</p>
-        
-        <div class="cards">
-            <div class="card">
-                <h3>Why Solar Capacity Growth Accelerated in 2023</h3>
-                <p>Analysis of the policy drivers, market conditions and technological improvements that led to record solar installations across Europe in 2023.</p>
-                <a href="#" class="btn btn-secondary">Read More</a>
-            </div>
-            <div class="card">
-                <h3>Understanding Market Signals for Battery Operation</h3>
-                <p>How day-ahead and imbalance pricing patterns create opportunities for flexible battery storage systems in today's electricity markets.</p>
-                <a href="#" class="btn btn-secondary">Read More</a>
-            </div>
-            <div class="card">
-                <h3>Comparing PV Technologies: What the Data Really Shows</h3>
-                <p>An evidence-based look at efficiency trends, cost trajectories and practical performance across different photovoltaic cell technologies.</p>
-                <a href="#" class="btn btn-secondary">Read More</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== NOVO: LOCKED STATE FOR INSIGHTS ===== -->
-    <section id="insightsLocked" class="locked-overlay">
-        <h3>🔒 Premium Content</h3>
-        <p>Please login or register to access our latest insights and analysis</p>
-        <div class="button-group">
-            <button class="btn btn-primary" onclick="openLoginModal()">Login</button>
-            <button class="btn btn-secondary" onclick="openRegisterModal()">Register</button>
-        </div>
-    </section>
-
     <section class="about-section" id="about">
         <h2>About</h2>
         <p>GreenAnalytics is an independent, non-commercial initiative created to make energy data more accessible and understandable. The project focuses on providing transparent analysis, intuitive visualisations and evidence-based interpretations of Europe's rapidly evolving energy landscape.</p>
@@ -731,9 +462,9 @@
             <div class="footer-section">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#dashboards">Dashboards</a></li>
-                    <li><a href="#insights">Insights</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="dashboards.html">Dashboards</a></li>
+                    <li><a href="insights.html">Insights</a></li>
                     <li><a href="#about">About</a></li>
                 </ul>
             </div>
@@ -752,146 +483,5 @@
             <p>&copy; GreenAnalytics 2025 &mdash; All rights reserved</p>
         </div>
     </footer>
-
-    <!-- ===== NOVO: FIREBASE SCRIPTS ===== -->
-    <script type="module">
-        // Import Firebase modules
-        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
-        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
-
-        // ===== SUBSTITUIR COM AS TUAS CREDENCIAIS FIREBASE =====
-        const firebaseConfig = {
-            apiKey: "AIzaSy...",
-            authDomain: "...",
-            projectId: "...",
-            storageBucket: "...",
-            messagingSenderId: "...",
-            appId: "..."
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-
-        // Make auth available globally
-        window.auth = auth;
-        window.createUserWithEmailAndPassword = createUserWithEmailAndPassword;
-        window.signInWithEmailAndPassword = signInWithEmailAndPassword;
-        window.signOut = signOut;
-
-        // Monitor authentication state
-        onAuthStateChanged(auth, (user) => {
-            const authButtons = document.getElementById('authButtons');
-            const userInfo = document.getElementById('userInfo');
-            const userEmail = document.getElementById('userEmail');
-            const protectedSections = document.querySelectorAll('.protected-content');
-            const dashboardsLocked = document.getElementById('dashboardsLocked');
-            const insightsLocked = document.getElementById('insightsLocked');
-
-            if (user) {
-                // User is signed in
-                authButtons.style.display = 'none';
-                userInfo.style.display = 'flex';
-                userEmail.textContent = user.email;
-                
-                // Show protected content
-                protectedSections.forEach(section => {
-                    section.classList.add('authenticated');
-                });
-                dashboardsLocked.style.display = 'none';
-                insightsLocked.style.display = 'none';
-            } else {
-                // User is signed out
-                authButtons.style.display = 'flex';
-                userInfo.style.display = 'none';
-                
-                // Hide protected content
-                protectedSections.forEach(section => {
-                    section.classList.remove('authenticated');
-                });
-                dashboardsLocked.style.display = 'flex';
-                insightsLocked.style.display = 'flex';
-            }
-        });
-    </script>
-
-    <script>
-        // Modal functions
-        function openLoginModal() {
-            document.getElementById('loginModal').style.display = 'block';
-            document.getElementById('loginMessage').innerHTML = '';
-        }
-
-        function closeLoginModal() {
-            document.getElementById('loginModal').style.display = 'none';
-        }
-
-        function openRegisterModal() {
-            document.getElementById('registerModal').style.display = 'block';
-            document.getElementById('registerMessage').innerHTML = '';
-        }
-
-        function closeRegisterModal() {
-            document.getElementById('registerModal').style.display = 'none';
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const loginModal = document.getElementById('loginModal');
-            const registerModal = document.getElementById('registerModal');
-            if (event.target == loginModal) {
-                closeLoginModal();
-            }
-            if (event.target == registerModal) {
-                closeRegisterModal();
-            }
-        }
-
-        // Register function
-        async function registerUser(event) {
-            event.preventDefault();
-            const email = document.getElementById('registerEmail').value;
-            const password = document.getElementById('registerPassword').value;
-            const passwordConfirm = document.getElementById('registerPasswordConfirm').value;
-            const messageDiv = document.getElementById('registerMessage');
-
-            // Validate passwords match
-            if (password !== passwordConfirm) {
-                messageDiv.innerHTML = '<div class="message error-message">Passwords do not match</div>';
-                return;
-            }
-
-            try {
-                await window.createUserWithEmailAndPassword(window.auth, email, password);
-                messageDiv.innerHTML = '<div class="message success-message">Account created successfully!</div>';
-                setTimeout(() => {
-                    closeRegisterModal();
-                }, 1500);
-            } catch (error) {
-                let errorMessage = 'Registration failed. Please try again.';
-                if (error.code === 'auth/email-already-in-use') {
-                    errorMessage = 'Email already in use';
-                } else if (error.code === 'auth/weak-password') {
-                    errorMessage = 'Password should be at least 6 characters';
-                } else if (error.code === 'auth/invalid-email') {
-                    errorMessage = 'Invalid email address';
-                }
-                messageDiv.innerHTML = `<div class="message error-message">${errorMessage}</div>`;
-            }
-        }
-
-        // Login function
-        async function loginUser(event) {
-            event.preventDefault();
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
-            const messageDiv = document.getElementById('loginMessage');
-
-            try {
-                await window.signInWithEmailAndPassword(window.auth, email, password);
-                messageDiv.innerHTML = '<div class="message success-message">Login successful!</div>';
-                setTimeout(() => {
-                    closeLoginModal();
-                }, 1500);
-            } catch (error) {
-                let errorMessage = '
+</body>
+</html>
