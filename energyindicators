@@ -225,21 +225,21 @@
                     <li class="nav-item">
                         <a href="dashboards.html">Dashboards</a>
                         <div class="dropdown">
-                            <a href="pv-market.html">PV Market</a>
-                            <a href="pv-technology.html">PV Technology</a>
-                            <a href="flexibility.html">Flexibility & Storage</a>
-                            <a href="electricity-prices.html">Electricity Prices</a>
-                            <a href="energy-system.html">Energy System Indicators</a>
+                            <a href="pvmarket.html">PV Market</a>
+                            <a href="pvtechnology.html">PV Technology</a>
+                            <a href="flexibility&storage.html">Flexibility & Storage</a>
+                            <a href="electricityprices.html">Electricity Prices</a>
+                            <a href="energyindicators.html">Energy System Indicators</a>
                         </div>
                     </li>
                     <li class="nav-item">
                         <a href="insights.html">Insights</a>
                         <div class="dropdown">
-                            <a href="pv-market.html">PV Market</a>
-                            <a href="pv-technology.html">PV Technology</a>
-                            <a href="flexibility.html">Flexibility & Storage</a>
-                            <a href="electricity-prices.html">Electricity Prices</a>
-                            <a href="energy-system.html">Energy System Indicators</a>
+                            <a href="pvmarket.html">PV Market</a>
+                            <a href="pvtechnology.html">PV Technology</a>
+                            <a href="flexibility&storage.html">Flexibility & Storage</a>
+                            <a href="electricityprices.html">Electricity Prices</a>
+                            <a href="energyindicators.html">Energy System Indicators</a>
                         </div>
                     </li>
                     <li><a href="index.html#about">About</a></li>
@@ -273,7 +273,7 @@
             <div class="footer-section">
                 <h4>Contact</h4>
                 <ul>
-                    <li><a href="mailto:contact@greenalytics.com">Email Us</a></li>
+                    <li><a href="mailto:eugreenalytics@gmail.com">Email Us</a></li>
                 </ul>
             </div>
             <div class="footer-section">
