@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>euGreenalytics | Data-Driven Insights for the Energy Transition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #059669;
+            --primary-dark: #047857;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f9fafb;
+            --bg-white: #ffffff;
+            --border: #e5e7eb;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-white);
+        }
+
+        header {
+            background: var(--bg-white);
+            border-bottom: 1px solid var(--border);
+            padding: 0.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            display: block;
+            height: 100px;
+            width: auto;
+        }
+
+        .nav-center {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            min-width: 220px;
+            padding: 0.5rem 0;
+            margin-top: 0.5rem;
+        }
+
+        .nav-item:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 0.75rem 1.25rem;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.9375rem;
+            transition: background 0.2s;
+        }
+
+        .dropdown a:hover {
+            background: var(--bg-light);
+            color: var(--primary);
+        }
+
+        .btn-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .btn-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-white);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            min-width: 220px;
+            padding: 0.5rem 0;
+            margin-top: 0.5rem;
+            z-index: 10;
+        }
+
+        .btn-wrapper:hover .btn-dropdown {
+            display: block;
+        }
+
+        .btn-dropdown a {
+            display: block;
+            padding: 0.75rem 1.25rem;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.9375rem;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .btn-dropdown a:hover {
+            background: var(--bg-light);
+            color: var(--primary);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        section > p {
+            font-size: 1.125rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            text-align: center;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature {
+            padding: 1.5rem;
+            background: var(--bg-light);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .feature h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .feature p {
+            color: var(--text-light);
+            font-size: 0.9375rem;
+        }
+
+        .about-section {
+            background: var(--bg-light);
+        }
+
+        .about-section p {
+            text-align: left;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .contact-section {
+            text-align: center;
+        }
+
+        .contact-section a {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .contact-section a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 0.9375rem;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            text-align: center;
+            color: #9ca3af;
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-wrap: wrap;
+            }
+
+            .nav-center {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="assets/marketing/logo-euGreenalytics.png" alt="euGreenalytics">
+            </a>
+            <div class="nav-center">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="nav-item">
+                        <a href="dashboards/dashboards.html">Dashboards</a>
+                        <div class="dropdown">
+                            <a href="dashboards/pvmarket.html">PV Market</a>
+                            <a href="dashboards/pvtechnology.html">PV Technology</a>
+                            <a href="dashboards/flexibility-storage.html">Flexibility & Storage</a>
+                            <a href="dashboards/electricityprices.html">Electricity Prices</a>
+                            <a href="dashboards/energyindicators.html">Energy System Indicators</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="insights/insights.html">Insights</a>
+                        <div class="dropdown">
+                            <a href="insights/pvmarket.html">PV Market</a>
+                            <a href="insights/pvtechnology.html">PV Technology</a>
+                            <a href="insights/flexibility-storage.html">Flexibility & Storage</a>
+                            <a href="insights/electricityprices.html">Electricity Prices</a>
+                            <a href="insights/energyindicators.html">Energy System Indicators</a>
+                        </div>
+                    </li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h1>Data-Driven Insights for the Energy Transition</h1>
+        <p>Clear visualisations and independent analysis of Europe's solar and electricity markets.</p>
+        <div class="button-group">
+            <div class="btn-wrapper">
+                <a href="dashboards/dashboards.html" class="btn btn-primary">View Dashboards</a>
+                <div class="btn-dropdown">
+                    <a href="dashboards/pvmarket.html">PV Market</a>
+                    <a href="dashboards/pvtechnology.html">PV Technology</a>
+                    <a href="dashboards/flexibility-storage.html">Flexibility & Storage</a>
+                    <a href="dashboards/electricityprices.html">Electricity Prices</a>
+                    <a href="dashboards/energyindicators.html">Energy System Indicators</a>
+                </div>
+            </div>
+            <div class="btn-wrapper">
+                <a href="insights/insights.html" class="btn btn-secondary">Explore Insights</a>
+                <div class="btn-dropdown">
+                    <a href="insights/pvmarket.html">PV Market</a>
+                    <a href="insights/pvtechnology.html">PV Technology</a>
+                    <a href="insights/flexibility-storage.html">Flexibility & Storage</a>
+                    <a href="insights/electricityprices.html">Electricity Prices</a>
+                    <a href="insights/energyindicators.html">Energy System Indicators</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>What is euGreenalytics</h2>
+        <p>euGreenalytics is an independent platform dedicated to analysing and visualising energy data, with a special focus on solar photovoltaic developments across Europe. The mission is to transform complex datasets into clear, accessible and actionable insights — from installed capacity trends to electricity markets, technology comparisons, and system flexibility.</p>
+        <p>The platform brings together interactive dashboards, analytical content, and research-driven energy intelligence to help professionals, researchers, and energy enthusiasts better understand the European energy transition.</p>
+        
+        <div class="features">
+            <div class="feature">
+                <h3>Interactive Dashboards</h3>
+                <p>Clean, up-to-date data visualisations designed for clarity and insight.</p>
+            </div>
+            <div class="feature">
+                <h3>Independent Analysis</h3>
+                <p>Objective analysis of solar PV and electricity markets without commercial bias.</p>
+            </div>
+            <div class="feature">
+                <h3>Technology Comparisons</h3>
+                <p>Comparative views of efficiencies, technologies and market evolution.</p>
+            </div>
+            <div class="feature">
+                <h3>Research-Based Insights</h3>
+                <p>Evidence-based insights on flexibility, storage and system behaviour.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-section" id="about">
+        <h2>About</h2>
+        <p>euGreenalytics is an independent, non-commercial initiative created to make energy data more accessible and understandable. The project focuses on providing transparent analysis, intuitive visualisations and evidence-based interpretations of Europe's rapidly evolving energy landscape.</p>
+        <p>The aim is to support better decision-making — from industry professionals to curious citizens — through clear, unbiased and well-structured information. While the platform remains anonymous for now, it reflects years of experience working with energy datasets, photovoltaic technologies and electricity market dynamics.</p>
+        <p>Consulting support may be available for organisations needing tailored data analysis or custom dashboards.</p>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <h2>Contact</h2>
+        <p>If you have questions or would like to discuss data-related work, feel free to get in touch.</p>
+        <p><a href="mailto:eugreenalytics@gmail.com">eugreenalytics@gmail.com</a></p>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="dashboards/dashboards.html">Dashboards</a></li>
+                    <li><a href="insights/insights.html">Insights</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:eugreenalytics@gmail.com">Email Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>euGreenalytics</h4>
+                <p style="color: #9ca3af; font-size: 0.875rem; line-height: 1.6;">Independent energy data analysis and visualisation platform.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; euGreenalytics 2025 &mdash; All rights reserved</p>
+        </div>
+    </footer>
+</body>
+</html>
