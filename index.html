@@ -34,7 +34,7 @@
         header {
             background: var(--bg-white);
             border-bottom: 1px solid var(--border);
-            padding: 0.8rem 0;
+            padding: 0.5rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -50,12 +50,10 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
+            display: flex;
+            align-items: center;
         }
 
-        
         .logo img {
             display: block;
             height: 100px;
@@ -84,7 +82,6 @@
             color: var(--primary);
         }
 
-        /* Dropdown styles */
         .nav-item {
             position: relative;
         }
@@ -121,7 +118,6 @@
             color: var(--primary);
         }
 
-        /* Button dropdown styles */
         .btn-wrapper {
             position: relative;
             display: inline-block;
@@ -368,28 +364,30 @@
 <body>
     <header>
         <nav>
-            <a href="assets/marketing/logo-euGreenalytics.png" class="logo"><img src="assets/marketing/logo-euGreenalytics.png" alt="euGreenalytics"></a>
+            <a href="index.html" class="logo">
+                <img src="assets/marketing/logo-euGreenalytics.png" alt="euGreenalytics">
+            </a>
             <div class="nav-center">
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li class="nav-item">
                         <a href="dashboards/dashboards.html">Dashboards</a>
                         <div class="dropdown">
-                            <a href="pvmarket.html">PV Market</a>
-                            <a href="pvtechnology.html">PV Technology</a>
-                            <a href="flexibility-storage.html">Flexibility & Storage</a>
-                            <a href="electricityprices.html">Electricity Prices</a>
-                            <a href="energyindicators.html">Energy System Indicators</a>
+                            <a href="dashboards/pvmarket.html">PV Market</a>
+                            <a href="dashboards/pvtechnology.html">PV Technology</a>
+                            <a href="dashboards/flexibility-storage.html">Flexibility & Storage</a>
+                            <a href="dashboards/electricityprices.html">Electricity Prices</a>
+                            <a href="dashboards/energyindicators.html">Energy System Indicators</a>
                         </div>
                     </li>
                     <li class="nav-item">
                         <a href="insights/insights.html">Insights</a>
                         <div class="dropdown">
-                            <a href="pvmarket.html">PV Market</a>
-                            <a href="pvtechnology.html">PV Technology</a>
-                            <a href="flexibility-storage.html">Flexibility & Storage</a>
-                            <a href="electricityprices.html">Electricity Prices</a>
-                            <a href="energyindicators.html">Energy System Indicators</a>
+                            <a href="insights/pvmarket.html">PV Market</a>
+                            <a href="insights/pvtechnology.html">PV Technology</a>
+                            <a href="insights/flexibility-storage.html">Flexibility & Storage</a>
+                            <a href="insights/electricityprices.html">Electricity Prices</a>
+                            <a href="insights/energyindicators.html">Energy System Indicators</a>
                         </div>
                     </li>
                     <li><a href="#about">About</a></li>
@@ -406,21 +404,21 @@
             <div class="btn-wrapper">
                 <a href="dashboards/dashboards.html" class="btn btn-primary">View Dashboards</a>
                 <div class="btn-dropdown">
-                    <a href="pvmarket.html">PV Market</a>
-                    <a href="pvtechnology.html">PV Technology</a>
-                    <a href="flexibility-storage.html">Flexibility & Storage</a>
-                    <a href="electricityprices.html">Electricity Prices</a>
-                    <a href="energyindicators.html">Energy System Indicators</a>
+                    <a href="dashboards/pvmarket.html">PV Market</a>
+                    <a href="dashboards/pvtechnology.html">PV Technology</a>
+                    <a href="dashboards/flexibility-storage.html">Flexibility & Storage</a>
+                    <a href="dashboards/electricityprices.html">Electricity Prices</a>
+                    <a href="dashboards/energyindicators.html">Energy System Indicators</a>
                 </div>
             </div>
             <div class="btn-wrapper">
                 <a href="insights/insights.html" class="btn btn-secondary">Explore Insights</a>
                 <div class="btn-dropdown">
-                    <a href="pvmarket.html">PV Market</a>
-                    <a href="pvtechnology.html">PV Technology</a>
-                    <a href="flexibility-storage.html">Flexibility & Storage</a>
-                    <a href="electricityprices.html">Electricity Prices</a>
-                    <a href="energyindicators.html">Energy System Indicators</a>
+                    <a href="insights/pvmarket.html">PV Market</a>
+                    <a href="insights/pvtechnology.html">PV Technology</a>
+                    <a href="insights/flexibility-storage.html">Flexibility & Storage</a>
+                    <a href="insights/electricityprices.html">Electricity Prices</a>
+                    <a href="insights/energyindicators.html">Energy System Indicators</a>
                 </div>
             </div>
         </div>
@@ -428,7 +426,7 @@
 
     <section>
         <h2>What is euGreenalytics</h2>
-        <p>euGreenalytics is an independent platform dedicated to analysing...</p>
+        <p>euGreenalytics is an independent platform dedicated to analysing and visualising energy data, with a special focus on solar photovoltaic developments across Europe. The mission is to transform complex datasets into clear, accessible and actionable insights — from installed capacity trends to electricity markets, technology comparisons, and system flexibility.</p>
         <p>The platform brings together interactive dashboards, analytical content, and research-driven energy intelligence to help professionals, researchers, and energy enthusiasts better understand the European energy transition.</p>
         
         <div class="features">
@@ -453,7 +451,7 @@
 
     <section class="about-section" id="about">
         <h2>About</h2>
-        <p>euGreenalytics is an independent, non-commercial initiative...</p>
+        <p>euGreenalytics is an independent, non-commercial initiative created to make energy data more accessible and understandable. The project focuses on providing transparent analysis, intuitive visualisations and evidence-based interpretations of Europe's rapidly evolving energy landscape.</p>
         <p>The aim is to support better decision-making — from industry professionals to curious citizens — through clear, unbiased and well-structured information. While the platform remains anonymous for now, it reflects years of experience working with energy datasets, photovoltaic technologies and electricity market dynamics.</p>
         <p>Consulting support may be available for organisations needing tailored data analysis or custom dashboards.</p>
     </section>
@@ -471,7 +469,7 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="dashboards/dashboards.html">Dashboards</a></li>
-                    <li><a href="insights/insights">Insights</a></li>
+                    <li><a href="insights/insights.html">Insights</a></li>
                     <li><a href="#about">About</a></li>
                 </ul>
             </div>
