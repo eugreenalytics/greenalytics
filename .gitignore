@@ -1,0 +1,19 @@
+# IGNORAR TUDO RELACIONADO A POWERBI (fora desta pasta)
+../*.pbix
+../*.pbit
+../Electricity_prices/
+../greenalytics-main.zip
+
+# ARQUIVOS DO SISTEMA
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.tmp
+*.log
+
+# PASTAS DE IDE
+.vscode/
+.idea/
+
+# SE FOR USAR NODE.JS NO FUTURO
+node_modules/

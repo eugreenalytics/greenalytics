@@ -103,7 +103,7 @@
         .dropdown {
             display: none;
             position: absolute;
-            top: 100%;
+            top: calc(100% + 0.5rem);  /* ← Usa calc em vez de margin */
             left: 0;
             background: var(--bg-white);
             border: 1px solid var(--border);
@@ -111,8 +111,16 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             min-width: 220px;
             padding: 0.5rem 0;
-            margin-top: 0.5rem;
         }
+        
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            height: 0.5rem;  /* Mesma altura do gap */
+        }   
 
         .nav-item:hover .dropdown {
             display: block;
@@ -465,7 +473,7 @@
 
     <section class="about-section" id="about">
         <h2>About</h2>
-        <p>euGreenalytics is an independent, non-commercial initiative created to make energy data more accessible and understandable. The project focuses on providing transparent analysis, intuitive visualisations and evidence-based interpretations of Europe's rapidly evolving energy landscape.</p>
+        <p>euGreenalytics is an independent initiative created to make energy data more accessible and understandable. The project focuses on providing transparent analysis, intuitive visualisations and evidence-based interpretations of Europe's rapidly evolving energy landscape.</p>
         <p>The aim is to support better decision-making — from industry professionals to curious citizens — through clear, unbiased and well-structured information. While the platform remains anonymous for now, it reflects years of experience working with energy datasets, photovoltaic technologies and electricity market dynamics.</p>
         <p>Consulting support may be available for organisations needing tailored data analysis or custom dashboards.</p>
     </section>

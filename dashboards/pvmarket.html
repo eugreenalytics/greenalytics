@@ -97,7 +97,7 @@
         .dropdown {
             display: none;
             position: absolute;
-            top: 100%;
+            top: calc(100% + 0.5rem);  /* ← Usa calc em vez de margin */
             left: 0;
             background: var(--bg-white);
             border: 1px solid var(--border);
@@ -105,8 +105,16 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             min-width: 220px;
             padding: 0.5rem 0;
-            margin-top: 0.5rem;
         }
+        
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            height: 0.5rem;  /* Mesma altura do gap */
+        }   
 
         .nav-item:hover .dropdown {
             display: block;
